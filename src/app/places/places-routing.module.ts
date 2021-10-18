@@ -18,7 +18,8 @@ const routes: Routes = [
           },
           {
             path: ':placeId',
-            loadChildren: './discover/place-detail/place-detail.module#PlaceDetailPageModule'
+            loadChildren: () => import('./discover//place-detail/place-detail.module').then( m => m.PlaceDetailPageModule)
+            // loadChildren: './discover/place-detail/place-detail.module#PlaceDetailPageModule'
           }
         ]
       },
