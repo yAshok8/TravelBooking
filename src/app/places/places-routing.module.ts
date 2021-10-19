@@ -18,8 +18,7 @@ const routes: Routes = [
           },
           {
             path: ':placeId',
-            loadChildren: () => import('./discover//place-detail/place-detail.module').then( m => m.PlaceDetailPageModule)
-            // loadChildren: './discover/place-detail/place-detail.module#PlaceDetailPageModule'
+            loadChildren: () => import('./discover/place-detail/place-detail.module').then( m => m.PlaceDetailPageModule)
           }
         ]
       },
@@ -40,7 +39,8 @@ const routes: Routes = [
           },
           {
             path: ':placeId',
-            loadChildren: './offers/offer-bookings/offer-bookings.module#OfferBookingsPageModule'
+            loadChildren: () => import('./offers/offer-bookings/offer-bookings.module').then(m => m.OfferBookingsPageModule)
+            // loadChildren: '#OfferBookingsPageModule'
           }
         ]
       },
