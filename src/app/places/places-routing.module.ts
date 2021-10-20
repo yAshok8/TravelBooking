@@ -31,11 +31,13 @@ const routes: Routes = [
           },
           {
             path: 'new',
-            loadChildren: './offers/new-offer/new-offers.module#NewOfferPageModule'
+            // loadChildren: './offers/new-offer/new-offers.module#NewOfferPageModule'
+            loadChildren: () => import('./offers/new-offer/new-offer.module').then(m => m.NewOfferPageModule)
           },
           {
             path: 'edit/:placeId',
-            loadChildren: './offers/edit-offer/edit-offer.module#EditOfferPageModule'
+            // loadChildren: './offers/edit-offer/edit-offer.module#EditOfferPageModule'
+            loadChildren: () => import('./offers/edit-offer/edit-offer.module').then(m => m.EditOfferPageModule)
           },
           {
             path: ':placeId',
