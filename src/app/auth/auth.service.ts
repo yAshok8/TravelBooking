@@ -14,11 +14,11 @@ export class AuthService {
 
   constructor() { }
 
-  login(){
-    this.isUserAuthenticated = true;
+  login() {
+    this._isUserAuthenticated = true;
   }
 
-  logout(){
-    this.isUserAuthenticated = false;
+  logout() {
+    this._isUserAuthenticated = false;
   }
 }
