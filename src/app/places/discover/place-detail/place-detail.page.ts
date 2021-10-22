@@ -35,7 +35,7 @@ export class PlaceDetailPage implements OnInit {
     console.log('onBookPlace() clicked');
     // this.navCtrl.navigateBack('/');
     this.modalCtrl
-    .create({component: CreateBookingPage})
+    .create({component: CreateBookingPage, componentProps: {selectedPlace: this.place}})
     .then(modal => {
       modal.present();
     });
