@@ -17,4 +17,8 @@ export class AuthPage implements OnInit {
     this.authService.login();
   }
 
+  onLogout(){
+    this.authService.logout();
+  }
+
 }

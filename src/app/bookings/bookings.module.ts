@@ -1,3 +1,4 @@
+import { BookingsPage } from './bookings.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,6 +14,6 @@ import { BookingsPageRoutingModule } from './bookings-routing.module';
     IonicModule,
     BookingsPageRoutingModule
   ],
-  declarations: []
+  declarations: [BookingsPage]
 })
 export class BookingsPageModule {}
