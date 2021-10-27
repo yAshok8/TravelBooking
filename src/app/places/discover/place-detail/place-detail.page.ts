@@ -3,7 +3,11 @@ import { Place } from './../../place.model';
 import { PlacesService } from './../../places.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
+import {
+  ActionSheetController,
+  ModalController,
+  NavController,
+} from '@ionic/angular';
 
 @Component({
   selector: 'app-place-detail',
@@ -11,19 +15,19 @@ import { ModalController, NavController } from '@ionic/angular';
   styleUrls: ['./place-detail.page.scss'],
 })
 export class PlaceDetailPage implements OnInit {
-
   public place: Place;
 
   constructor(
     private route: ActivatedRoute,
     private navCtrl: NavController,
     private placeService: PlacesService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private actionSheetController: ActionSheetController
   ) {}
 
   ngOnInit() {
-    this.route.paramMap.subscribe(paramsMap => {
-      if(!paramsMap.has('placeId')){
+    this.route.paramMap.subscribe((paramsMap) => {
+      if (!paramsMap.has('placeId')) {
         this.navCtrl.navigateBack('/places/tabs/discover');
         return;
       }
@@ -32,8 +36,40 @@ export class PlaceDetailPage implements OnInit {
   }
 
   onBookPlace() {
-    console.log('onBookPlace() clicked');
-    // this.navCtrl.navigateBack('/');
+    this.actionSheetController
+      .create({
+        header: 'Choose An Action',
+        buttons: [
+          {
+            text: 'Select Date',
+            // icon: 'calendar-outline',
+            handler: () => {
+              this.openBookingModal('select');
+            },
+          },
+          {
+            text: 'Random Date',
+            // icon: 'calendar-number-outline',
+            handler: () => {
+              this.openBookingModal('random');
+            },
+          },
+          {
+            text: 'Cancel',
+            // icon: 'cancel',
+            role: 'destructive',
+            handler: () => {
+              console.log('Cancel clicked');
+            },
+          },
+        ],
+      })
+      .then((actionSheetEl) => {
+        actionSheetEl.present();
+      });
+  }
+
+  openBookingModal(mode: 'select' | 'random'){
     this.modalCtrl
     .create({component: CreateBookingPage, componentProps: {selectedPlace: this.place}})
     .then(modal => {
