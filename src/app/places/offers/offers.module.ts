@@ -1,3 +1,4 @@
+import { OfferItemPage } from './offer-item/offer-item.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,6 @@ import { OffersPage } from './offers.page';
     IonicModule,
     OffersPageRoutingModule
   ],
-  declarations: [OffersPage]
+  declarations: [OffersPage, OfferItemPage]
 })
 export class OffersPageModule {}
