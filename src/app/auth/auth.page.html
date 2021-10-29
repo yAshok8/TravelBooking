@@ -1,12 +1,71 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Authenticate</ion-title>
+    <ion-title>{{ isLogin ? 'Login' : 'Create a new account' }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <!-- <ion-spinner color="primary" *ngIf="isLoading"></ion-spinner> -->
-  <ion-button (click)="onLogin()">
-    Login
-  </ion-button>
+  <form #localFormRef="ngForm" (ngSubmit)="onSubmit(localFormRef)">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-list>
+            <ion-item>
+              <ion-label position="floating">Email</ion-label>
+              <ion-input
+                type="email"
+                ngModel
+                name="email"
+                required
+                email
+                #email="ngModel"
+              ></ion-input>
+            </ion-item>
+            <ion-item lines="none" *ngIf="!email.valid && email.touched">
+              <ion-label color="danger">
+                Please enter a valid email address
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input
+                type="password"
+                ngModel
+                name="password"
+                required
+                minlength="5"
+                maxlength="30"
+                #pass="ngModel"
+              ></ion-input>
+            </ion-item>
+            <ion-item lines="none" *ngIf="!pass.valid && pass.touched">
+              <ion-text color="danger"> Password is invalid </ion-text>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <div class="ion-text-right">
+            <ion-button
+              (click)="onLogin()"
+              fill="outline"
+              color="primary"
+              type="submit"
+              [disabled]="!localFormRef.valid"
+            >
+              <ion-icon name="log-in-outline" slot="start"></ion-icon>
+              Login
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-button expand="block" fill="outline" (click)="switchModes()">Switch to {{ isLogin ? 'SignUp' : 'Login' }}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>
