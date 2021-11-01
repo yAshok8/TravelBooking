@@ -21,8 +21,11 @@ export class AuthPage implements OnInit {
 
   ngOnInit() {}
 
+  ionViewWillEnter() {
+    console.log('ionViewWillEnter() is called');
+  }
+
   onLogin() {
-    console.log('Kelsie Monroe');
     this.isLoading = true;
     this.authService.login();
     this.loadingController
