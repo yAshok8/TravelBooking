@@ -38,7 +38,7 @@ export class NewOfferPage implements OnInit {
   }
 
   onCreateOffer(){
-    console.log('lassan');
+    console.log(this.form);
   }
 
 }
