@@ -14,7 +14,7 @@ export class NewOfferPage implements OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
-      title: new FormControl(null, {
+      title: new FormControl('Los Santos', {
         updateOn: 'blur',
         validators: [Validators.required]
       }),
@@ -25,19 +25,14 @@ export class NewOfferPage implements OnInit {
       price: new FormControl(null, {
         updateOn: 'blur',
         validators: [Validators.required, Validators.min(1)]
-      }),
-      dateFrom: new FormControl(null, {
-        updateOn: 'blur',
-        validators: [Validators.required]
-      }),
-      dateTo: new FormControl(null, {
-        updateOn: 'blur',
-        validators: [Validators.required]
       })
     });
   }
 
   onCreateOffer(){
+    if (!this.form.valid) {
+      return;
+    }
     console.log(this.form);
   }
 
