@@ -12,21 +12,27 @@ export class PlacesService {
       'Manhattan Mansion',
       'In the heart of NY City',
       'https://cdn.pixabay.com/photo/2015/03/11/12/31/buildings-668616_960_720.jpg',
-      178.11
+      178.11,
+      new Date('2022-01-01'),
+      new Date('2022-01-31')
     ),
     new Place(
       'p2',
       'Dharkhadi Dam',
       'The heaven of Dahisar',
       'https://i.ytimg.com/vi/-e74z2OWDFM/maxresdefault.jpg',
-      6.5
+      6.5,
+      new Date('2022-01-01'),
+      new Date('2022-01-31')
     ),
     new Place(
       'p3',
       'Varanasi',
       'The land of Hindu Temples',
       'https://www.reviewofreligions.org/wp-content/uploads/2020/08/Varanasi-1-1024x1024.jpg',
-      20.5
+      20.5,
+      new Date('2022-01-01'),
+      new Date('2022-01-31')
     ),
 
   ];

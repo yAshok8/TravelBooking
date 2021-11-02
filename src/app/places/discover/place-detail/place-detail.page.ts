@@ -1,8 +1,10 @@
-import { CreateBookingPage } from './../../../bookings/create-booking/create-booking.page';
+import { CreateBookingPage } from './../../../create-booking/create-booking.page';
+
 import { Place } from './../../place.model';
 import { PlacesService } from './../../places.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+
 import {
   ActionSheetController,
   ModalController,
