@@ -1,4 +1,4 @@
-import { CreateBookingPage } from './../../../create-booking/create-booking.page';
+import { CreateBookingPage } from 'src/app/create-booking/create-booking.page';
 
 import { Place } from './../../place.model';
 import { PlacesService } from './../../places.service';
@@ -73,7 +73,7 @@ export class PlaceDetailPage implements OnInit {
 
   openBookingModal(mode: 'select' | 'random'){
     this.modalCtrl
-    .create({component: CreateBookingPage, componentProps: {selectedPlace: this.place}})
+    .create({component: CreateBookingPage, componentProps: {selectedPlace: this.place, selectedMode: mode}})
     .then(modal => {
       modal.present();
       return modal.onDidDismiss();

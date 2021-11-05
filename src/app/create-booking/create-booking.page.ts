@@ -1,7 +1,8 @@
 import { Place } from './../places/place.model';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+// import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-booking',
@@ -9,37 +10,35 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./create-booking.page.scss'],
 })
 export class CreateBookingPage implements OnInit {
-
   @Input() selectedPlace: Place;
+  @Input() selectedMode: string;
 
-  public createBookingForm: FormGroup;
+  startDate: string;
+  endDate: string;
 
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController) {}
 
   ngOnInit() {
-    console.log('coming here');
-    this.createBookingForm = new FormGroup({
-      firstName: new FormControl('Ashok', {
-        updateOn: 'blur',
-        validators: [Validators.required]
-      }),
-      lastName: new FormControl('Yadav', {
-        updateOn: 'blur',
-        validators: [Validators.required]
-      }),
-      guestNumber: new FormControl(null, {
-        updateOn: 'blur',
-        validators: [Validators.required]
-      }),
-      fromDate: new FormControl(null, {
-        updateOn: 'blur',
-        validators: [Validators.required]
-      }),
-      toDate: new FormControl(null, {
-        updateOn: 'blur',
-        validators: [Validators.required]
-      })
-    });
+    const availableFrom = new Date(this.selectedPlace.availableFrom);
+    const availableTo = new Date(this.selectedPlace.availableTo);
+    if (this.selectedMode === 'random') {
+      console.log(this.selectedMode);
+      this.startDate = new Date(
+        availableFrom.getTime() +
+          Math.random() *
+            (availableTo.getTime() -
+              7 * 24 * 60 * 60 * 1000 -
+              availableFrom.getTime())
+      ).toISOString();
+
+      this.endDate = new Date(
+        new Date(this.startDate).getTime() +
+          Math.random() *
+            (new Date(this.startDate).getTime() +
+              6 * 24 * 60 * 60 * 1000 -
+              new Date(this.startDate).getTime())
+      ).toISOString();
+    }
   }
 
   onCancel() {
@@ -47,11 +46,13 @@ export class CreateBookingPage implements OnInit {
   }
 
   onBookPlace() {
-    this.modalCtrl.dismiss({message: 'This is a dummy message!'}, 'confirm');
+    this.modalCtrl.dismiss({ message: 'This is a dummy message!' }, 'confirm');
   }
 
-  onSubmit() {
-    console.log(this.createBookingForm);
+  onSubmit(form: NgForm) {
+    if (!form.valid) {
+      console.log('form is not valid');
+      return;
+    }
   }
-
 }

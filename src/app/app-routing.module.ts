@@ -25,7 +25,7 @@ const routes: Routes = [
   {
     path: 'create-booking',
     loadChildren: () => import('./create-booking/create-booking.module').then( m => m.CreateBookingPageModule)
-  },
+  }
 ];
 
 @NgModule({

@@ -13,8 +13,8 @@ export class PlacesService {
       'In the heart of NY City',
       'https://cdn.pixabay.com/photo/2015/03/11/12/31/buildings-668616_960_720.jpg',
       178.11,
-      new Date('2022-01-01'),
-      new Date('2022-01-31')
+      new Date('2022-01-20'),
+      new Date('2022-05-30')
     ),
     new Place(
       'p2',
@@ -22,8 +22,8 @@ export class PlacesService {
       'The heaven of Dahisar',
       'https://i.ytimg.com/vi/-e74z2OWDFM/maxresdefault.jpg',
       6.5,
-      new Date('2022-01-01'),
-      new Date('2022-01-31')
+      new Date('2022-01-05'),
+      new Date('2022-01-15')
     ),
     new Place(
       'p3',
@@ -31,8 +31,8 @@ export class PlacesService {
       'The land of Hindu Temples',
       'https://www.reviewofreligions.org/wp-content/uploads/2020/08/Varanasi-1-1024x1024.jpg',
       20.5,
-      new Date('2022-01-01'),
-      new Date('2022-01-31')
+      new Date('2022-03-01'),
+      new Date('2022-03-12')
     ),
 
   ];
